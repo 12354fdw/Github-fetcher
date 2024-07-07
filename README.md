@@ -1,5 +1,6 @@
 # Github-fetcher
 
+Do `pastebin get u1CttBFF gitfetch` to get it.
 A fetcher for getting files from github.
 
 to make your own github page make sure that there is a manifest.lua
