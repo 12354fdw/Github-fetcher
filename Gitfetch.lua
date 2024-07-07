@@ -21,7 +21,7 @@ for i,v in pairs(manifest) do
     shell.run("wget",link..v,out.."/"..v)
 end
 
-shell.run("delete","manifest_"..thin)
+shell.run("delete","manifest_"..thing)
 
 print()
 print("download complete")
