@@ -40,7 +40,7 @@ function get(data)
     write.close()
 end
 
-local what = get("manifest.lua")
+local what = get({"manifest.lua",false})
 if what == "FAILURE" then
     return
 end
