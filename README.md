@@ -12,8 +12,8 @@ to make your own github page make sure that there is a manifest.lua that inludes
 e.g.
 
 return {
-  {"NAME_OF_FILE.txt",false},
-  {"NAME_OF_FILE2.txt",true,"test_folder/what"}
+  {"NAME_OF_FILE.txt",false}, \n
+  {"NAME_OF_FILE2.txt",true,"test_folder/what"} \n
 }
 
 make sure it has the name of the file to be downloaded in a list.
