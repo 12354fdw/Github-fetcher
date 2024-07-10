@@ -6,8 +6,8 @@ A fetcher for getting files from github.
 to make your own github page make sure that there is a manifest.lua that inludes
 
 1. Name (string),
-2. Forced downlod directory (boolean),
-3. Forced download directory directory (string)
+2. Indicator if forced downlod directory is used (boolean),
+3. A directory for forced downlod directory (string)
 
 e.g.
 ```
