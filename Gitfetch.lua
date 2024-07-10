@@ -4,8 +4,29 @@ local repo = args[2]
 local branch = args[3]
 local out = args[4] or ""
 
-local thing = user.."/"..repo.."/"..branch
-local link = "https://raw.githubusercontent.com/"..thing.."/"
+local programName = args[0] or fs.getName(shell.getRunningProgram())
+local downloaded = {}
+
+local thing
+local link
+
+function cleanup()
+    for i,v in pairs(downloaded) do
+        fs.delete(v)
+    end
+    print("Usage: "..programName.." <user> <repo> <branch> [output dir]")
+end
+
+local s,e = pcall(function()
+    thing = user.."/"..repo.."/"..branch
+    link = "https://raw.githubusercontent.com/"..thing.."/"
+end)
+
+if not s then
+    cleanup()
+    return
+end
+
 
 function get(data)
 
@@ -38,10 +59,12 @@ function get(data)
     local write = fs.open(dir,"wb")
     write.write(readed)
     write.close()
+    table.insert(downloaded,dir)
 end
 
 local what = get({"manifest.lua",false})
 if what == "FAILURE" then
+    cleanup()
     return
 end
 
@@ -52,11 +75,12 @@ print()
 for i,v in pairs(manifest) do
     local what = get(v)
     if what == "FAILURE" then
+        cleanup()
         return
     end
 end
 
-fs.delete(out.."/manifest.lua")
+pcall( function () fs.delete(out.."/manifest.lua") end)
 
 print()
 print("download complete")
