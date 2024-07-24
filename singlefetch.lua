@@ -3,10 +3,9 @@ local user = args[1]
 local repo = args[2]
 local branch = args[3]
 local file = args[4]
+local out = args[5] or ""
 
 local programName = args[0] or fs.getName(shell.getRunningProgram())
-
-local dir = fs.getDir()
 
 thing = user.."/"..repo.."/"..branch
 link = "https://raw.githubusercontent.com/"..thing.."/"
@@ -46,5 +45,5 @@ function get(data)
     table.insert(downloaded,dir)
 end
 
-local data = {link..file,false}
+local data = {file,false}
 get(data)
