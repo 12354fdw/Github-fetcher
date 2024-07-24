@@ -18,3 +18,5 @@ return {
 ```
 
 make sure it has the name of the file to be downloaded in a list.
+
+do `pastebin get gXagrMy0 singlefetch` to get singlefetch
